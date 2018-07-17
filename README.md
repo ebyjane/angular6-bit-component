@@ -9,620 +9,93 @@ https://bitsrc.io/ebyjane/angular/global/ui
 
 Details of the same is mentioned below.
 
-diff (firstArray:[], secondArray:[]) : []
 
-Computes the difference between two array references.
-Example
-
-diff([1,2,3], [1,2,3,4,5]) // => [4,5]
-
-Arguments
-firstArray
-:
-[]
-
-secondArray
-:
-[]
-
-Returns
-[]
-
-returns an array representing the difference between the two arrays
-first (array:[]) : (* | null)
-
-Returns the first element of an array.
-Example
-
-first([1, 2, 3]) // => 1
-  first(['a', 'b', 'c']) // => 'a'
-
-Argument
-array
-:
-[]
-
-Returns
-(* | null)
-
-first element of given array
-flatMap (array:[*], cb:Function) : [*]
-
-Builds a new collection by applying a function to all elements of this array and using the elements of the resulting collections.
-Example
-
-flatMap([[1, 2, 3], [4, 5, 6]], val => val) // => [1, 2, 3, 4, 5, 6]
-
-Arguments
-array
-:
-[*]
-
-cb
-:
-Function
-
-Returns
-[*]
-
-makeArray (val:*) : [*]
-
-Wraps a value with an array.
-Example
-
-makeArray(1) // => [1]
- makeArray([1]) // => [1]
- makeArray(null) // => []
-
-Argument
-val
-:
-*
-
-Returns
-[*]
-
-an ssh client for consuming bit components from a remote scope
-
-A ponyfill for Buffer.from, uses native implementation if available.
-sha1 (:(string | Buffer), encoding:string) : string
-
-encrypt data buffer or string into a sha1 hash
-Example
-
-sha1('foo bar') // => '3773dea65156909838fa6c22825cafe090ff8030'
-
-Arguments
-(string | Buffer)
-
-encoding
-:
-string
-
-Returns
-string
-
-sha1 hash
-extractFileNameFromPath (filePath:string) : string
-
-Recieves a file path and returns the file name
-Argument
-filePath
-:
-string
-
-Returns
-string
-
-compose (functions:Array<function>) : function
-
-compose functions into one function from right to left
-Argument
-functions
-:
-Array<function>
-
-Returns
-function
-
-pipe (functions:Array<function>) : function
-
-compose functions from left to right
-Example
-
-pipe(func1, func2, func3)(val) === func3(func2(func3(val)))
-
-Argument
-functions
-:
-Array<function>
-
-Returns
-function
-
-toKubeformat (bitId:String) 
-
-Convert bit id to acceptable kubernetes job name
-Argument
-bitId
-:
-String
-
-Returns
-
-String
-clamp (value:number, min:number, max:number) : number
-
-Returns a number whose value is limited to the given range.
-Example
-
-clamp(50, 5, 10) // => 5
-
-Arguments
-value
-:
-number
-
-The value to be clamped
-min
-:
-number
-
-The lower boundary of the output range
-max
-:
-number
-
-The upper boundary of the output range
-Returns
-number
-
-A number in the range [min, max]
-clean (obj:object) : object
-
-Cleans all object’s properties that contains a falsy value and returns a new object without them.
-Example
-
-new cleaned object
- clean({ foo: null, bar: 'foo' }) // => { bar: 'foo' }
-
-Argument
-obj
-:
-object
-
-object to clean
-Returns
-object
-
-evolve (transformations:Object, object:Object) : Object
-
-Creates a new object by recursively evolving a shallow copy of object, according to the transformation functions. All non-primitive properties are copied by reference.
-
-A transformation function will not be invoked if its corresponding key does not exist in the evolved object.
-Example
-
-var tomato  = {firstName: '  Tomato ', data: {elapsed: 100, remaining: 1400}, id:123};
-     var transformations = {
-       firstName: trim,
-       lastName: trim, // Will not get invoked.
-       data: {elapsed: add(1), remaining: add(-1)}
-     };
-     evolve(transformations, tomato); //=> {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id:123}
-
-Arguments
-transformations
-:
-Object
-
-The object specifying transformation functions to apply to the object.
-object
-:
-Object
-
-The object to be transformed.
-Returns
-Object
-
-The transformed object.
-forEach (obj:object, cb:function) 
-
-Invoke a function for every key within given object or array.
-Example
-
-forEach({ a: 1, b: 2, c: 3 }, (val, key) => console.log(key, val));
- // => a 1 b 2 c 3
-
-Arguments
-obj
-:
-object
-
-object or array to iterate
-cb
-:
-function
-
-callback function to invoke
-groupBy (collection:(Array | Object), iteratee:Function) : Object
-
-Creates an object composed of keys generated from the results of running each element of collection thru iteratee. The order of grouped values is determined by the order they occur in collection. The corresponding value of each key is an array of elements responsible for generating the key. The iteratee is invoked with one argument: (value).
-Example
-
-groupBy([6.1, 4.2, 6.3], Math.floor)
-// => { '4': [4.2], '6': [6.1, 6.3] }
-
-Arguments
-collection
-:
-(Array | Object)
-
-The collection to iterate over.
-iteratee
-:
-Function
-
-The iteratee to transform keys.
-Returns
-Object
-
-Returns the composed aggregate object.
-hasOwnProperty (obj:object, prop:(string | number)) : boolean
-
-Determines whether the object has the specified property.
-Example
-
-hasOwnProperty({foo: 'bar'}, 'foo') // => true
- hasOwnProperty({foo: 'bar'}, 'bar') // => false
-
-Arguments
-obj
-:
-object
-
-prop
-:
-(string | number)
-
-property to test
-Returns
-boolean
-
-map (object:object, iteratee:function (val, key)) : object
-
-Returns the results of applying the iteratee to each element of the object.
-Example
-
-const newObj = mapObject({ start: 5, end: 12 }, function(val, key) {
-  return val + 5;
-});
-console.log(newObj) //  { start: 10, end: 17 }
-
-Arguments
-object
-:
-object
-
-iteratee
-:
-function (val, key)
-
-Returns
-object
-
-mergeAll (:array<object>) : object
-
-merge an array of objects
-Argument
-array<object>
-
-Returns
-object
-
-merge () 
-
-Merges multiple objects into one
-Example
-
-const o1 = { a: 1 };
-const o2 = { b: 2 };
-const o3 = { c: 3 };
-
-const obj = merge(o1, o2, o3);
-console.log(obj); // { a: 1, b: 2, c: 3 }
-console.log(o1);  // { a: 1 } does not mutate objects
-
-values (object:object) : []
-
-get all object values.
-Example
-
-values({ a: 1, b: 2, c: 3 }) // => [1, 2, 3]
-
-Argument
-object
-:
-object
-
-Returns
-[]
-
-object's values
-getData (cache:RedisClient, key:string, fields:(string | Array.<string>)) : Promise<Array.<string>>
-
-Returns a Promise resolved with the values associated with the specified fields in the hash stored at key.
-Arguments
-cache
-:
-RedisClient
-
--
-key
-:
-string
-
-hash stored at key
-fields
-:
-(string | Array.<string>)
-
-Returns
-Promise<Array.<string>>
-
-list of values associated with the given fields, in the same order as they are requested.
-setData (cache:RedisClient, key:string, fields:(string | Array.<string>)) : Promise<Array.<string>>
-
-Returns a Promise resolved with the values associated with the specified fields in the hash stored at key.
-Arguments
-cache
-:
-RedisClient
-
--
-key
-:
-string
-
-hash stored at key
-fields
-:
-(string | Array.<string>)
-
-Returns
-Promise<Array.<string>>
-
-list of values associated with the given fields, in the same order as they are requested.
-parseUrl (url:string) : object
-Argument
-url
-:
-string
-
-Returns
-object
-
-{ host, path, port, username }
-cleanChar (str:string, char:string) : string
-
-cleans the first occurence of char from str reference.
-Example
-
-cleanChar('hello', 'h') // => 'ello'
-
-Arguments
-str
-:
-string
-
-string to perform cleaning on.
-char
-:
-string
-
-character to clean from string
-Returns
-string
-
-cleaned string.
-contains (str:string, searchStr:string) : boolean
-
-determines whether string str ref contains substring searchRef.
-Example
-
-contains('foo bar', 'bar') // => true
- contains('foo', 'bar') // => false
-
-Arguments
-str
-:
-string
-
-searchStr
-:
-string
-
-Returns
-boolean
-
-fromBase64 (base64:string) : string
-
-decode a string from base64
-Argument
-base64
-:
-string
-
-Returns
-string
-
-leftPad (str:string, len:number, ch:string) : string
-
-pad a string to the left.
-Example
-
-leftPad('foo', 5) // => "  foo"
- leftPad('foobar', 6) // => "foobar"
- leftPad(1, 2, '0') // => "01"
-
-Arguments
-str
-:
-string
-
-string to pad
-len
-:
-number
-
-total
-ch
-:
-string
-
-char to use for padding
-Returns
-string
-
-modified string
-removeNewLines (str:string) : string
-
-remove all new lines from a string (do not mutate the string but return new instance)
-Argument
-str
-:
-string
-
-Returns
-string
-
-startsWithOneOf (str:string, options:Array) : bool
-
-Checks whether the string start with on the options specified.
-Example
-
-startsWithOneOf('hello', ['h', 'afdsf']) // => true
-startsWithOneOf('hello', ['g', 'afdsf']) // => false
-
-Arguments
-str
-:
-string
-
-string to check.
-options
-:
-Array
-
-options to start with
-Returns
-bool
-
-whether the string starts with one of the options.
-toBase64 (val:(string | Buffer)) : string
-
-encode a string or a buffer to base64
-Example
-
-toBase64('foo bar') // => Zm9vIGJhcg==
- toBase64(new Buffer('foo bar')) // => Zm9vIGJhcg==
-
-Argument
-val
-:
-(string | Buffer)
-
-string or buffer to encode
-Returns
-string
-
-base64 encoded string
-empty (name:*) : boolean
-
-determines whether obj reference is empty (empty array, empty object and/or falsy values)
-Example
-
-empty([]) // => true
- empty({}) // => true
- empty(1) // => false
- empty('') // => false
- empty('foo') // => false
- empty(false) // => true
-
-Argument
-name
-:
-*
-
-Returns
-boolean
-
-isEmail (email:string) : boolean
-
-simple email validator
-Example
-
-isEmail('not an email') => false
-isEmail('valid.email@gmail.com') => true
-isEmail('@invalid.com') => false
-
-Argument
-email
-:
-string
-
-the email to validate upon
-Returns
-boolean
-
-isNil (val:*) : boolean
-
-determines whether val reference is null or undefined.
-Example
-
-isNil(null) // => true
- isNil('') // => true
-
-Argument
-val
-:
-*
-
-Returns
-boolean
-
-isNumber (val:*) : boolean
-
-determiens whether val is a number.
-Example
-
-isNumber('') // => false
-isNumber(54) // => true
-isNumber('number') // => false
-isNumber(64.236) // => true
-
-Argument
-val
-:
-*
-
-Returns
-boolean
-
-isString (val:*) : boolean
-
-detemines whether str is a string.
-Example
-
-isString(3) // => false
- isString('') // => true
-
-Argument
-val
-:
-*
-
-Returns
-boolean
+<div class="ypb_O" style="padding-top: 32px; padding-bottom: 32px;"><div class="row"><div class="col-xs-12"><div><!-- react-empty: 4176 --><div class="row"><div class="col-xs-12"></div><div class="col-xs-12"><!-- react-empty: 4180 --></div><div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">diff </span><!-- react-text: 4188 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4190 -->firstArray<!-- /react-text --><!-- react-text: 4191 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code><!-- react-text: 4193 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4195 -->secondArray<!-- /react-text --><!-- react-text: 4196 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code></span><span><!-- react-text: 4199 -->) <!-- /react-text --><!-- react-text: 4200 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Computes the difference between two array references.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4207 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">diff</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; [4,5]</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4216 --> Argument<!-- /react-text --><!-- react-text: 4217 -->s<!-- /react-text --><!-- react-text: 4218 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>firstArray</strong><!-- react-text: 4221 -->: <!-- /react-text --><code>[]</code><p><!-- react-text: 4224 --> <!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>secondArray</strong><!-- react-text: 4227 -->: <!-- /react-text --><code>[]</code><p><!-- react-text: 4230 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>[]</code><p><!-- react-text: 4236 --> <!-- /react-text --><!-- react-text: 4237 -->returns an array representing the difference between the two arrays<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">first </span><!-- react-text: 4242 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4244 -->array<!-- /react-text --><!-- react-text: 4245 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code></span><span><!-- react-text: 4248 -->) <!-- /react-text --><!-- react-text: 4249 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">(* | null)</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Returns the first element of an array.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4256 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; 1</span>
+  <span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; 'a'</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4265 --> Argument<!-- /react-text --><!-- react-text: 4266 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>array</strong><!-- react-text: 4269 -->: <!-- /react-text --><code>[]</code><p><!-- react-text: 4272 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>(* | null)</code><p><!-- react-text: 4278 --> <!-- /react-text --><!-- react-text: 4279 -->first element of given array<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">flatMap </span><!-- react-text: 4284 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4286 -->array<!-- /react-text --><!-- react-text: 4287 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">[*]</code><!-- react-text: 4289 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4291 -->cb<!-- /react-text --><!-- react-text: 4292 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">Function</code></span><span><!-- react-text: 4295 -->) <!-- /react-text --><!-- react-text: 4296 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">[*]</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Builds a new collection by applying a function to all elements of
+this array and using the elements of the resulting collections.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4303 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> val <span class="token operator">=&gt;</span> val<span class="token punctuation">)</span> <span class="token comment">// =&gt; [1, 2, 3, 4, 5, 6]</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4312 --> Argument<!-- /react-text --><!-- react-text: 4313 -->s<!-- /react-text --><!-- react-text: 4314 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>array</strong><!-- react-text: 4317 -->: <!-- /react-text --><code>[*]</code><p><!-- react-text: 4320 --> <!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>cb</strong><!-- react-text: 4323 -->: <!-- /react-text --><code>Function</code><p><!-- react-text: 4326 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>[*]</code><p><!-- react-text: 4332 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">makeArray </span><!-- react-text: 4337 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4339 -->val<!-- /react-text --><!-- react-text: 4340 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">*</code></span><span><!-- react-text: 4343 -->) <!-- /react-text --><!-- react-text: 4344 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">[*]</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Wraps a value with an array.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4351 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">makeArray</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; [1]</span>
+ <span class="token function">makeArray</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; [1]</span>
+ <span class="token function">makeArray</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; []</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4360 --> Argument<!-- /react-text --><!-- react-text: 4361 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>val</strong><!-- react-text: 4364 -->: <!-- /react-text --><code>*</code><p><!-- react-text: 4367 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>[*]</code><p><!-- react-text: 4373 --> <!-- /react-text --></p></div></div></div></div></div><div><div class="_2liMA KiH8S"><div class="_11WpK"><div><p>an ssh client for consuming bit components from a remote scope</p>
+</div></div></div></div><div><div class="_2liMA KiH8S"><div class="_11WpK"><div><p>A ponyfill for Buffer.from, uses native implementation if available.</p>
+</div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">sha1 </span><!-- react-text: 4386 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4388 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">(string | Buffer)</code><!-- react-text: 4390 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4392 -->encoding<!-- /react-text --><!-- react-text: 4393 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 4396 -->) <!-- /react-text --><!-- react-text: 4397 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>encrypt <code>data</code> buffer or string into a sha1 hash</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4404 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">sha1</span><span class="token punctuation">(</span><span class="token string">'foo bar'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; '3773dea65156909838fa6c22825cafe090ff8030'</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4413 --> Argument<!-- /react-text --><!-- react-text: 4414 -->s<!-- /react-text --><!-- react-text: 4415 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong></strong><code>(string | Buffer)</code><p><!-- react-text: 4420 --> <!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>encoding</strong><!-- react-text: 4423 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 4426 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>string</code><p><!-- react-text: 4432 --> <!-- /react-text --><!-- react-text: 4433 -->sha1 hash<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">extractFileNameFromPath </span><!-- react-text: 4438 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4440 -->filePath<!-- /react-text --><!-- react-text: 4441 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 4444 -->) <!-- /react-text --><!-- react-text: 4445 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Recieves a file path and returns the file name</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4453 --> Argument<!-- /react-text --><!-- react-text: 4454 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>filePath</strong><!-- react-text: 4457 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 4460 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>string</code><p><!-- react-text: 4466 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">compose </span><!-- react-text: 4471 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4473 -->functions<!-- /react-text --><!-- react-text: 4474 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">Array&lt;function&gt;</code></span><span><!-- react-text: 4477 -->) <!-- /react-text --><!-- react-text: 4478 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">function</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>compose functions into one function from right to left</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4486 --> Argument<!-- /react-text --><!-- react-text: 4487 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>functions</strong><!-- react-text: 4490 -->: <!-- /react-text --><code>Array&lt;function&gt;</code><p><!-- react-text: 4493 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>function</code><p><!-- react-text: 4499 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">pipe </span><!-- react-text: 4504 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4506 -->functions<!-- /react-text --><!-- react-text: 4507 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">Array&lt;function&gt;</code></span><span><!-- react-text: 4510 -->) <!-- /react-text --><!-- react-text: 4511 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">function</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>compose functions from left to right</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4518 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">pipe</span><span class="token punctuation">(</span>func1<span class="token punctuation">,</span> func2<span class="token punctuation">,</span> func3<span class="token punctuation">)</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">func3</span><span class="token punctuation">(</span><span class="token function">func2</span><span class="token punctuation">(</span><span class="token function">func3</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4527 --> Argument<!-- /react-text --><!-- react-text: 4528 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>functions</strong><!-- react-text: 4531 -->: <!-- /react-text --><code>Array&lt;function&gt;</code><p><!-- react-text: 4534 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>function</code><p><!-- react-text: 4540 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">toKubeformat </span><!-- react-text: 4545 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4547 -->bitId<!-- /react-text --><!-- react-text: 4548 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">String</code></span><span><!-- react-text: 4551 -->) <!-- /react-text --></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Convert bit id to acceptable kubernetes job name</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4558 --> Argument<!-- /react-text --><!-- react-text: 4559 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>bitId</strong><!-- react-text: 4562 -->: <!-- /react-text --><code>String</code><p><!-- react-text: 4565 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code></code><p><!-- react-text: 4571 --> <!-- /react-text --><!-- react-text: 4572 -->String<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">clamp </span><!-- react-text: 4577 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4579 -->value<!-- /react-text --><!-- react-text: 4580 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">number</code><!-- react-text: 4582 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4584 -->min<!-- /react-text --><!-- react-text: 4585 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">number</code><!-- react-text: 4587 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4589 -->max<!-- /react-text --><!-- react-text: 4590 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">number</code></span><span><!-- react-text: 4593 -->) <!-- /react-text --><!-- react-text: 4594 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">number</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Returns a number whose value is limited to the given range.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4601 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">clamp</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; 5</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4610 --> Argument<!-- /react-text --><!-- react-text: 4611 -->s<!-- /react-text --><!-- react-text: 4612 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>value</strong><!-- react-text: 4615 -->: <!-- /react-text --><code>number</code><p><!-- react-text: 4618 --> <!-- /react-text --><!-- react-text: 4619 -->The value to be clamped<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>min</strong><!-- react-text: 4622 -->: <!-- /react-text --><code>number</code><p><!-- react-text: 4625 --> <!-- /react-text --><!-- react-text: 4626 -->The lower boundary of the output range<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>max</strong><!-- react-text: 4629 -->: <!-- /react-text --><code>number</code><p><!-- react-text: 4632 --> <!-- /react-text --><!-- react-text: 4633 -->The upper boundary of the output range<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>number</code><p><!-- react-text: 4639 --> <!-- /react-text --><!-- react-text: 4640 -->A number in the range [min, max]<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">clean </span><!-- react-text: 4645 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4647 -->obj<!-- /react-text --><!-- react-text: 4648 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code></span><span><!-- react-text: 4651 -->) <!-- /react-text --><!-- react-text: 4652 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Cleans all object’s properties that contains a falsy value
+and returns a new object without them.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4659 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token keyword">new</span> <span class="token class-name">cleaned</span> object
+ <span class="token function">clean</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> bar<span class="token punctuation">:</span> <span class="token string">'foo'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; { bar: 'foo' }</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4668 --> Argument<!-- /react-text --><!-- react-text: 4669 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>obj</strong><!-- react-text: 4672 -->: <!-- /react-text --><code>object</code><p><!-- react-text: 4675 --> <!-- /react-text --><!-- react-text: 4676 -->object to clean<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>object</code><p><!-- react-text: 4682 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">evolve </span><!-- react-text: 4687 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4689 -->transformations<!-- /react-text --><!-- react-text: 4690 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">Object</code><!-- react-text: 4692 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4694 -->object<!-- /react-text --><!-- react-text: 4695 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">Object</code></span><span><!-- react-text: 4698 -->) <!-- /react-text --><!-- react-text: 4699 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">Object</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Creates a new object by recursively evolving a shallow copy of <code>object</code>,
+according to the <code>transformation</code> functions. All non-primitive properties
+are copied by reference.</p>
+<p>A <code>transformation</code> function will not be invoked if its corresponding key
+does not exist in the evolved object.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4706 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token keyword">var</span> tomato  <span class="token operator">=</span> <span class="token punctuation">{</span>firstName<span class="token punctuation">:</span> <span class="token string">'  Tomato '</span><span class="token punctuation">,</span> data<span class="token punctuation">:</span> <span class="token punctuation">{</span>elapsed<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span> remaining<span class="token punctuation">:</span> <span class="token number">1400</span><span class="token punctuation">}</span><span class="token punctuation">,</span> id<span class="token punctuation">:</span><span class="token number">123</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+     <span class="token keyword">var</span> transformations <span class="token operator">=</span> <span class="token punctuation">{</span>
+       firstName<span class="token punctuation">:</span> trim<span class="token punctuation">,</span>
+       lastName<span class="token punctuation">:</span> trim<span class="token punctuation">,</span> <span class="token comment">// Will not get invoked.</span>
+       data<span class="token punctuation">:</span> <span class="token punctuation">{</span>elapsed<span class="token punctuation">:</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> remaining<span class="token punctuation">:</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+     <span class="token function">evolve</span><span class="token punctuation">(</span>transformations<span class="token punctuation">,</span> tomato<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=&gt; {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id:123}</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4715 --> Argument<!-- /react-text --><!-- react-text: 4716 -->s<!-- /react-text --><!-- react-text: 4717 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>transformations</strong><!-- react-text: 4720 -->: <!-- /react-text --><code>Object</code><p><!-- react-text: 4723 --> <!-- /react-text --><!-- react-text: 4724 -->The object specifying transformation functions to apply
+       to the object.<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>object</strong><!-- react-text: 4727 -->: <!-- /react-text --><code>Object</code><p><!-- react-text: 4730 --> <!-- /react-text --><!-- react-text: 4731 -->The object to be transformed.<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>Object</code><p><!-- react-text: 4737 --> <!-- /react-text --><!-- react-text: 4738 -->The transformed object.<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">forEach </span><!-- react-text: 4743 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4745 -->obj<!-- /react-text --><!-- react-text: 4746 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code><!-- react-text: 4748 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4750 -->cb<!-- /react-text --><!-- react-text: 4751 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">function</code></span><span><!-- react-text: 4754 -->) <!-- /react-text --></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Invoke a function for every key within given object or array.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4760 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">{</span> a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>val<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token comment">// =&gt; a 1 b 2 c 3</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4769 --> Argument<!-- /react-text --><!-- react-text: 4770 -->s<!-- /react-text --><!-- react-text: 4771 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>obj</strong><!-- react-text: 4774 -->: <!-- /react-text --><code>object</code><p><!-- react-text: 4777 --> <!-- /react-text --><!-- react-text: 4778 -->object or array to iterate<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>cb</strong><!-- react-text: 4781 -->: <!-- /react-text --><code>function</code><p><!-- react-text: 4784 --> <!-- /react-text --><!-- react-text: 4785 -->callback function to invoke<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">groupBy </span><!-- react-text: 4790 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4792 -->collection<!-- /react-text --><!-- react-text: 4793 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">(Array | Object)</code><!-- react-text: 4795 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4797 -->iteratee<!-- /react-text --><!-- react-text: 4798 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">Function</code></span><span><!-- react-text: 4801 -->) <!-- /react-text --><!-- react-text: 4802 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">Object</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Creates an object composed of keys generated from the results of running
+each element of <code>collection</code> thru <code>iteratee</code>. The order of grouped values
+is determined by the order they occur in <code>collection</code>. The corresponding
+value of each key is an array of elements responsible for generating the
+key. The iteratee is invoked with one argument: (value).</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4809 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">groupBy</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">6.1</span><span class="token punctuation">,</span> <span class="token number">4.2</span><span class="token punctuation">,</span> <span class="token number">6.3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span>floor<span class="token punctuation">)</span>
+<span class="token comment">// =&gt; { '4': [4.2], '6': [6.1, 6.3] }</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4818 --> Argument<!-- /react-text --><!-- react-text: 4819 -->s<!-- /react-text --><!-- react-text: 4820 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>collection</strong><!-- react-text: 4823 -->: <!-- /react-text --><code>(Array | Object)</code><p><!-- react-text: 4826 --> <!-- /react-text --><!-- react-text: 4827 -->The collection to iterate over.<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>iteratee</strong><!-- react-text: 4830 -->: <!-- /react-text --><code>Function</code><p><!-- react-text: 4833 --> <!-- /react-text --><!-- react-text: 4834 -->The iteratee to transform keys.<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>Object</code><p><!-- react-text: 4840 --> <!-- /react-text --><!-- react-text: 4841 -->Returns the composed aggregate object.<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">hasOwnProperty </span><!-- react-text: 4846 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4848 -->obj<!-- /react-text --><!-- react-text: 4849 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code><!-- react-text: 4851 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4853 -->prop<!-- /react-text --><!-- react-text: 4854 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">(string | number)</code></span><span><!-- react-text: 4857 -->) <!-- /react-text --><!-- react-text: 4858 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">boolean</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Determines whether the object has the specified property.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4865 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token punctuation">{</span>foo<span class="token punctuation">:</span> <span class="token string">'bar'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'foo'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span>
+ <span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token punctuation">{</span>foo<span class="token punctuation">:</span> <span class="token string">'bar'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4874 --> Argument<!-- /react-text --><!-- react-text: 4875 -->s<!-- /react-text --><!-- react-text: 4876 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>obj</strong><!-- react-text: 4879 -->: <!-- /react-text --><code>object</code><p><!-- react-text: 4882 --> <!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>prop</strong><!-- react-text: 4885 -->: <!-- /react-text --><code>(string | number)</code><p><!-- react-text: 4888 --> <!-- /react-text --><!-- react-text: 4889 -->property to test<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>boolean</code><p><!-- react-text: 4895 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">map </span><!-- react-text: 4900 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4902 -->object<!-- /react-text --><!-- react-text: 4903 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code><!-- react-text: 4905 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4907 -->iteratee<!-- /react-text --><!-- react-text: 4908 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">function (val, key)</code></span><span><!-- react-text: 4911 -->) <!-- /react-text --><!-- react-text: 4912 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Returns the results of applying the iteratee to each element of the object.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4919 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token keyword">const</span> newObj <span class="token operator">=</span> <span class="token function">mapObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span> start<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> end<span class="token punctuation">:</span> <span class="token number">12</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> val <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newObj<span class="token punctuation">)</span> <span class="token comment">//  { start: 10, end: 17 }</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4928 --> Argument<!-- /react-text --><!-- react-text: 4929 -->s<!-- /react-text --><!-- react-text: 4930 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>object</strong><!-- react-text: 4933 -->: <!-- /react-text --><code>object</code><p><!-- react-text: 4936 --> <!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>iteratee</strong><!-- react-text: 4939 -->: <!-- /react-text --><code>function (val, key)</code><p><!-- react-text: 4942 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>object</code><p><!-- react-text: 4948 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">mergeAll </span><!-- react-text: 4953 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4955 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">array&lt;object&gt;</code></span><span><!-- react-text: 4958 -->) <!-- /react-text --><!-- react-text: 4959 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>merge an array of objects</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 4967 --> Argument<!-- /react-text --><!-- react-text: 4968 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong></strong><code>array&lt;object&gt;</code><p><!-- react-text: 4973 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>object</code><p><!-- react-text: 4979 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">merge </span><!-- react-text: 4984 -->(<!-- /react-text --><span><!-- react-text: 4986 -->) <!-- /react-text --></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Merges multiple objects into one</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 4992 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token keyword">const</span> o1 <span class="token operator">=</span> <span class="token punctuation">{</span> a<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o2 <span class="token operator">=</span> <span class="token punctuation">{</span> b<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o3 <span class="token operator">=</span> <span class="token punctuation">{</span> c<span class="token punctuation">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>o1<span class="token punctuation">,</span> o2<span class="token punctuation">,</span> o3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 1, b: 2, c: 3 }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// { a: 1 } does not mutate objects</span></code></pre></div></div></div></div><div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">values </span><!-- react-text: 5003 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5005 -->object<!-- /react-text --><!-- react-text: 5006 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code></span><span><!-- react-text: 5009 -->) <!-- /react-text --><!-- react-text: 5010 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>get all object values.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5017 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">{</span> a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; [1, 2, 3]</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5026 --> Argument<!-- /react-text --><!-- react-text: 5027 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>object</strong><!-- react-text: 5030 -->: <!-- /react-text --><code>object</code><p><!-- react-text: 5033 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>[]</code><p><!-- react-text: 5039 --> <!-- /react-text --><!-- react-text: 5040 -->object's values<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">getData </span><!-- react-text: 5045 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5047 -->cache<!-- /react-text --><!-- react-text: 5048 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">RedisClient</code><!-- react-text: 5050 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5052 -->key<!-- /react-text --><!-- react-text: 5053 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code><!-- react-text: 5055 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5057 -->fields<!-- /react-text --><!-- react-text: 5058 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">(string | Array.&lt;string&gt;)</code></span><span><!-- react-text: 5061 -->) <!-- /react-text --><!-- react-text: 5062 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">Promise&lt;Array.&lt;string&gt;&gt;</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Returns a Promise resolved with the values associated with the specified fields in the hash stored at key.</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5070 --> Argument<!-- /react-text --><!-- react-text: 5071 -->s<!-- /react-text --><!-- react-text: 5072 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>cache</strong><!-- react-text: 5075 -->: <!-- /react-text --><code>RedisClient</code><p><!-- react-text: 5078 --> <!-- /react-text --><!-- react-text: 5079 -->-<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>key</strong><!-- react-text: 5082 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5085 --> <!-- /react-text --><!-- react-text: 5086 -->hash stored at key<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>fields</strong><!-- react-text: 5089 -->: <!-- /react-text --><code>(string | Array.&lt;string&gt;)</code><p><!-- react-text: 5092 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>Promise&lt;Array.&lt;string&gt;&gt;</code><p><!-- react-text: 5098 --> <!-- /react-text --><!-- react-text: 5099 -->list of values associated with the given fields, in the same order as they are requested.<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">setData </span><!-- react-text: 5104 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5106 -->cache<!-- /react-text --><!-- react-text: 5107 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">RedisClient</code><!-- react-text: 5109 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5111 -->key<!-- /react-text --><!-- react-text: 5112 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code><!-- react-text: 5114 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5116 -->fields<!-- /react-text --><!-- react-text: 5117 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">(string | Array.&lt;string&gt;)</code></span><span><!-- react-text: 5120 -->) <!-- /react-text --><!-- react-text: 5121 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">Promise&lt;Array.&lt;string&gt;&gt;</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Returns a Promise resolved with the values associated with the specified fields in the hash stored at key.</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5129 --> Argument<!-- /react-text --><!-- react-text: 5130 -->s<!-- /react-text --><!-- react-text: 5131 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>cache</strong><!-- react-text: 5134 -->: <!-- /react-text --><code>RedisClient</code><p><!-- react-text: 5137 --> <!-- /react-text --><!-- react-text: 5138 -->-<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>key</strong><!-- react-text: 5141 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5144 --> <!-- /react-text --><!-- react-text: 5145 -->hash stored at key<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>fields</strong><!-- react-text: 5148 -->: <!-- /react-text --><code>(string | Array.&lt;string&gt;)</code><p><!-- react-text: 5151 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>Promise&lt;Array.&lt;string&gt;&gt;</code><p><!-- react-text: 5157 --> <!-- /react-text --><!-- react-text: 5158 -->list of values associated with the given fields, in the same order as they are requested.<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">parseUrl </span><!-- react-text: 5163 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5165 -->url<!-- /react-text --><!-- react-text: 5166 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 5169 -->) <!-- /react-text --><!-- react-text: 5170 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">object</code></span></div></h2><div class="_2liMA"><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5176 --> Argument<!-- /react-text --><!-- react-text: 5177 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>url</strong><!-- react-text: 5180 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5183 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>object</code><p><!-- react-text: 5189 --> <!-- /react-text --><!-- react-text: 5190 -->{ host, path, port, username }<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">cleanChar </span><!-- react-text: 5195 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5197 -->str<!-- /react-text --><!-- react-text: 5198 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code><!-- react-text: 5200 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5202 -->char<!-- /react-text --><!-- react-text: 5203 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 5206 -->) <!-- /react-text --><!-- react-text: 5207 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>cleans the first occurence of <code>char</code> from <code>str</code> reference.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5214 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">cleanChar</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token string">'h'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; 'ello'</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5223 --> Argument<!-- /react-text --><!-- react-text: 5224 -->s<!-- /react-text --><!-- react-text: 5225 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>str</strong><!-- react-text: 5228 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5231 --> <!-- /react-text --><!-- react-text: 5232 -->string to perform cleaning on.<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>char</strong><!-- react-text: 5235 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5238 --> <!-- /react-text --><!-- react-text: 5239 -->character to clean from string<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>string</code><p><!-- react-text: 5245 --> <!-- /react-text --><!-- react-text: 5246 -->cleaned string.<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">contains </span><!-- react-text: 5251 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5253 -->str<!-- /react-text --><!-- react-text: 5254 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code><!-- react-text: 5256 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5258 -->searchStr<!-- /react-text --><!-- react-text: 5259 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 5262 -->) <!-- /react-text --><!-- react-text: 5263 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">boolean</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>determines whether string <code>str</code> ref contains substring <code>searchRef</code>.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5270 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'foo bar'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span>
+ <span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5279 --> Argument<!-- /react-text --><!-- react-text: 5280 -->s<!-- /react-text --><!-- react-text: 5281 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>str</strong><!-- react-text: 5284 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5287 --> <!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>searchStr</strong><!-- react-text: 5290 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5293 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>boolean</code><p><!-- react-text: 5299 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">fromBase64 </span><!-- react-text: 5304 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5306 -->base64<!-- /react-text --><!-- react-text: 5307 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 5310 -->) <!-- /react-text --><!-- react-text: 5311 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>decode a string from base64</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5319 --> Argument<!-- /react-text --><!-- react-text: 5320 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>base64</strong><!-- react-text: 5323 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5326 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>string</code><p><!-- react-text: 5332 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">leftPad </span><!-- react-text: 5337 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5339 -->str<!-- /react-text --><!-- react-text: 5340 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code><!-- react-text: 5342 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5344 -->len<!-- /react-text --><!-- react-text: 5345 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">number</code><!-- react-text: 5347 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5349 -->ch<!-- /react-text --><!-- react-text: 5350 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 5353 -->) <!-- /react-text --><!-- react-text: 5354 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>pad a string to the left.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5361 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">leftPad</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; "  foo"</span>
+ <span class="token function">leftPad</span><span class="token punctuation">(</span><span class="token string">'foobar'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; "foobar"</span>
+ <span class="token function">leftPad</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; "01"</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5370 --> Argument<!-- /react-text --><!-- react-text: 5371 -->s<!-- /react-text --><!-- react-text: 5372 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>str</strong><!-- react-text: 5375 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5378 --> <!-- /react-text --><!-- react-text: 5379 -->string to pad<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>len</strong><!-- react-text: 5382 -->: <!-- /react-text --><code>number</code><p><!-- react-text: 5385 --> <!-- /react-text --><!-- react-text: 5386 -->total<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>ch</strong><!-- react-text: 5389 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5392 --> <!-- /react-text --><!-- react-text: 5393 -->char to use for padding<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>string</code><p><!-- react-text: 5399 --> <!-- /react-text --><!-- react-text: 5400 -->modified string<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">removeNewLines </span><!-- react-text: 5405 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5407 -->str<!-- /react-text --><!-- react-text: 5408 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 5411 -->) <!-- /react-text --><!-- react-text: 5412 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>remove all new lines from a string (do not mutate the string but return new instance)</p>
+</div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5420 --> Argument<!-- /react-text --><!-- react-text: 5421 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>str</strong><!-- react-text: 5424 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5427 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>string</code><p><!-- react-text: 5433 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">startsWithOneOf </span><!-- react-text: 5438 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5440 -->str<!-- /react-text --><!-- react-text: 5441 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code><!-- react-text: 5443 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 5445 -->options<!-- /react-text --><!-- react-text: 5446 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">Array</code></span><span><!-- react-text: 5449 -->) <!-- /react-text --><!-- react-text: 5450 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">bool</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>Checks whether the string start with on the options specified.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5457 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">startsWithOneOf</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'h'</span><span class="token punctuation">,</span> <span class="token string">'afdsf'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span>
+<span class="token function">startsWithOneOf</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'afdsf'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5466 --> Argument<!-- /react-text --><!-- react-text: 5467 -->s<!-- /react-text --><!-- react-text: 5468 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>str</strong><!-- react-text: 5471 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5474 --> <!-- /react-text --><!-- react-text: 5475 -->string to check.<!-- /react-text --></p></div><div class="font-medium _33y6j"><strong>options</strong><!-- react-text: 5478 -->: <!-- /react-text --><code>Array</code><p><!-- react-text: 5481 --> <!-- /react-text --><!-- react-text: 5482 -->options to start with<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>bool</code><p><!-- react-text: 5488 --> <!-- /react-text --><!-- react-text: 5489 -->whether the string starts with one of the options.<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">toBase64 </span><!-- react-text: 5494 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5496 -->val<!-- /react-text --><!-- react-text: 5497 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">(string | Buffer)</code></span><span><!-- react-text: 5500 -->) <!-- /react-text --><!-- react-text: 5501 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>encode a string or a buffer to base64</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5508 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">toBase64</span><span class="token punctuation">(</span><span class="token string">'foo bar'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; Zm9vIGJhcg==</span>
+ <span class="token function">toBase64</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Buffer</span><span class="token punctuation">(</span><span class="token string">'foo bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; Zm9vIGJhcg==</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5517 --> Argument<!-- /react-text --><!-- react-text: 5518 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>val</strong><!-- react-text: 5521 -->: <!-- /react-text --><code>(string | Buffer)</code><p><!-- react-text: 5524 --> <!-- /react-text --><!-- react-text: 5525 -->string or buffer to encode<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>string</code><p><!-- react-text: 5531 --> <!-- /react-text --><!-- react-text: 5532 -->base64 encoded string<!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">empty </span><!-- react-text: 5537 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5539 -->name<!-- /react-text --><!-- react-text: 5540 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">*</code></span><span><!-- react-text: 5543 -->) <!-- /react-text --><!-- react-text: 5544 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">boolean</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>determines whether <code>obj</code> reference is empty (empty array, empty object and/or falsy values)</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5551 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span>
+ <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span>
+ <span class="token function">empty</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span>
+ <span class="token function">empty</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span>
+ <span class="token function">empty</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span>
+ <span class="token function">empty</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5560 --> Argument<!-- /react-text --><!-- react-text: 5561 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>name</strong><!-- react-text: 5564 -->: <!-- /react-text --><code>*</code><p><!-- react-text: 5567 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>boolean</code><p><!-- react-text: 5573 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">isEmail </span><!-- react-text: 5578 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5580 -->email<!-- /react-text --><!-- react-text: 5581 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">string</code></span><span><!-- react-text: 5584 -->) <!-- /react-text --><!-- react-text: 5585 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">boolean</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>simple email validator</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5592 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">isEmail</span><span class="token punctuation">(</span><span class="token string">'not an email'</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token boolean">false</span>
+<span class="token function">isEmail</span><span class="token punctuation">(</span><span class="token string">'valid.email@gmail.com'</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token boolean">true</span>
+<span class="token function">isEmail</span><span class="token punctuation">(</span><span class="token string">'@invalid.com'</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token boolean">false</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5601 --> Argument<!-- /react-text --><!-- react-text: 5602 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>email</strong><!-- react-text: 5605 -->: <!-- /react-text --><code>string</code><p><!-- react-text: 5608 --> <!-- /react-text --><!-- react-text: 5609 -->the email to validate upon<!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>boolean</code><p><!-- react-text: 5615 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">isNil </span><!-- react-text: 5620 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5622 -->val<!-- /react-text --><!-- react-text: 5623 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">*</code></span><span><!-- react-text: 5626 -->) <!-- /react-text --><!-- react-text: 5627 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">boolean</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>determines whether <code>val</code> reference is null or undefined.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5634 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">isNil</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span>
+ <span class="token function">isNil</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5643 --> Argument<!-- /react-text --><!-- react-text: 5644 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>val</strong><!-- react-text: 5647 -->: <!-- /react-text --><code>*</code><p><!-- react-text: 5650 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>boolean</code><p><!-- react-text: 5656 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">isNumber </span><!-- react-text: 5661 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5663 -->val<!-- /react-text --><!-- react-text: 5664 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">*</code></span><span><!-- react-text: 5667 -->) <!-- /react-text --><!-- react-text: 5668 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">boolean</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>determiens whether <code>val</code> is a number.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5675 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span>
+<span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token number">54</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span>
+<span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span>
+<span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token number">64.236</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5684 --> Argument<!-- /react-text --><!-- react-text: 5685 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>val</strong><!-- react-text: 5688 -->: <!-- /react-text --><code>*</code><p><!-- react-text: 5691 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>boolean</code><p><!-- react-text: 5697 --> <!-- /react-text --></p></div></div></div></div></div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">isString </span><!-- react-text: 5702 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 5704 -->val<!-- /react-text --><!-- react-text: 5705 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">*</code></span><span><!-- react-text: 5708 -->) <!-- /react-text --><!-- react-text: 5709 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">boolean</code></span></div></h2><div class="_2liMA"><div class="_11WpK"><div><p>detemines whether <code>str</code> is a string.</p>
+</div></div><div class="_2M4XY"><h3 class="_2sjf_"><!-- react-text: 5716 -->Example<!-- /react-text --></h3><div><div class="_11WpK"><div id="highlightor" class="_2c9BR"><pre class=" language-jsx"><code data-auto-select="true" class=" language-jsx"><span class="token function">isString</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; false</span>
+ <span class="token function">isString</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; true</span></code></pre></div></div></div></div><div><div class="_2msLx"><h3 class="_2sjf_"><!-- react-text: 5725 --> Argument<!-- /react-text --><!-- react-text: 5726 --> <!-- /react-text --></h3><div class="font-medium _33y6j"><strong>val</strong><!-- react-text: 5729 -->: <!-- /react-text --><code>*</code><p><!-- react-text: 5732 --> <!-- /react-text --></p></div></div><div class="_1VIVi"><h3 class="_2sjf_"> Returns </h3><div class="_33y6j font-medium"><code>boolean</code><p><!-- react-text: 5738 --> <!-- /react-text --></p></div></div></div></div></div></div></div></div><div class="col-xs-12 col-md-6 col-lg-6"></div></div><div class="row"><div class="col-xs-12"></div></div></div></div></div></div>
 
 https://docs.bitsrc.io
 
