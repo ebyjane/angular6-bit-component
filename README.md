@@ -623,3 +623,7 @@ val
 
 Returns
 boolean
+
+https://docs.bitsrc.io
+
+Export, Import, Add, build documents can be found in above URL
