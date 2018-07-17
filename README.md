@@ -1,4 +1,4 @@
-# angular6-for-bit-component
+# angular6-bit-component
 Angular6 with shared components
 
 Below Components are created using Angular6 and pushed to bit 
