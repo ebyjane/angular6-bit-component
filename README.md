@@ -4,7 +4,7 @@
 <!-- react-empty: 4176 -->
 <div class="row"><div class="col-xs-12"></div>
 <div class="col-xs-12"><!-- react-empty: 4180 --></div>
-<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Name: Bit Src based Component Library </span><!-- react-text: 4188 -->(<!-- /react-text --><span class="sc-VigVT fsvkdW"><!-- react-text: 4190 -->firstArray<!-- /react-text --><!-- react-text: 4191 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code><!-- react-text: 4193 -->, <!-- /react-text --></span><span class="sc-VigVT fsvkdW"><!-- react-text: 4195 -->secondArray<!-- /react-text --><!-- react-text: 4196 -->:<!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code></span><span><!-- react-text: 4199 -->) <!-- /react-text --><!-- react-text: 4200 -->: <!-- /react-text --><code class="sc-jTzLTM gJqlxT">[]</code></span></div></h2><div class="_2liMA"><div class="_11WpK"></div>
+<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Name: Bit Src based Component Library </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
 
 Name: Bit Src based Component Library
  
