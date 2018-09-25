@@ -4,9 +4,23 @@
 <!-- react-empty: 4176 -->
 <div class="row"><div class="col-xs-12"></div>
 <div class="col-xs-12"><!-- react-empty: 4180 --></div>
-<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Name: Bit Src based Component Library </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
+<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Name of the Project:  </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div><p>Bit Src based Component Library</p>
 
-Name: Bit Src based Component Library
+<div class="ypb_O" style="padding-top: 32px; padding-bottom: 32px;">
+<div class="row"><div class="col-xs-12"><div>
+<!-- react-empty: 4176 -->
+<div class="row"><div class="col-xs-12"></div>
+<div class="col-xs-12"><!-- react-empty: 4180 --></div>
+<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Description: </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
+<p>Build a web application based on DRY principles and use a web component library approach Use web framework Angular Implemented the sample using the BitSrc framework</p>
+
+<div class="ypb_O" style="padding-top: 32px; padding-bottom: 32px;">
+<div class="row"><div class="col-xs-12"><div>
+<!-- react-empty: 4176 -->
+<div class="row"><div class="col-xs-12"></div>
+<div class="col-xs-12"><!-- react-empty: 4180 --></div>
+<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Aim of this Project:  </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
+<p>Building web component based on Angular and Bit Src Framework.</p>
  
 Description: Build a web application based on DRY principles and use a web component library approach Use web framework Angular Implemented the sample using the BitSrc framework
 
