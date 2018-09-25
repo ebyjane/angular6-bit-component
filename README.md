@@ -1,6 +1,36 @@
 # angular6-bit-component
 Angular6 with shared components
 
+Name: Bit Src based Component Library
+ 
+Description: Build a web application based on DRY principles and use a web component library approach Use web framework Angular Implemented the sample using the BitSrc framework
+
+Aim of this Project: Building web component based on Angular and Bit Src Framework.
+
+Objective: - To import/export component when ever needed. Same component can be used in both Angular and React JS. To follow DRY (Don’t Repeat Yourself) this is useful.
+
+How to use the project and for what purpose?
+
+This project is for demo purpose only, in this we have shown how we are exporting/importing components to follow DRY (Don’t Repeat Yourself) principles.
+
+What and how it is achieved?
+
+bit import bit.utils/string/left-pad --path src/left-pad
+
+Using above command, we can import the needed component to the project.
+
+For doing this we need NodeJS and Bit installed in the machine.
+
+Bit Installation steps is given below.
+
+https://docs.bitsrc.io/docs/installation.html
+
+You need to have NodeJS installed before doing below steps 
+
+npm install bit-bin --global
+
+
+
 Below Components are created using Angular6 and pushed to bit 
 
 You can find the same in below URL
