@@ -21,32 +21,44 @@
 <div class="col-xs-12"><!-- react-empty: 4180 --></div>
 <div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Aim of this Project:  </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
 <p>Building web component based on Angular and Bit Src Framework.</p>
- 
-Description: Build a web application based on DRY principles and use a web component library approach Use web framework Angular Implemented the sample using the BitSrc framework
 
-Aim of this Project: Building web component based on Angular and Bit Src Framework.
+<div class="ypb_O" style="padding-top: 32px; padding-bottom: 32px;">
+<div class="row"><div class="col-xs-12"><div>
+<!-- react-empty: 4176 -->
+<div class="row"><div class="col-xs-12"></div>
+<div class="col-xs-12"><!-- react-empty: 4180 --></div>
+<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">Objective:  </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
+<p>To import/export component when ever needed. Same component can be used in both Angular and React JS. To follow DRY (Don’t Repeat Yourself) principles this is useful.</p>
 
-Objective: - To import/export component when ever needed. Same component can be used in both Angular and React JS. To follow DRY (Don’t Repeat Yourself) this is useful.
+<div class="ypb_O" style="padding-top: 32px; padding-bottom: 32px;">
+<div class="row"><div class="col-xs-12"><div>
+<!-- react-empty: 4176 -->
+<div class="row"><div class="col-xs-12"></div>
+<div class="col-xs-12"><!-- react-empty: 4180 --></div>
+<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">How to use the project and for what purpose?  </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
+<p>This project is for demo purpose only, in this we have shown how we are exporting/importing components to follow DRY (Don’t Repeat Yourself) principles.</p>
 
-How to use the project and for what purpose?
 
-This project is for demo purpose only, in this we have shown how we are exporting/importing components to follow DRY (Don’t Repeat Yourself) principles.
+<div class="ypb_O" style="padding-top: 32px; padding-bottom: 32px;">
+<div class="row"><div class="col-xs-12"><div>
+<!-- react-empty: 4176 -->
+<div class="row"><div class="col-xs-12"></div>
+<div class="col-xs-12"><!-- react-empty: 4180 --></div>
+<div class="col-xs-12 col-md-6 col-lg-6"><div><div><div><h2 class="eucZp"><div class="sc-gZMcBi kVTsxs"><span class="sc-gqjmRU kDvmuR">What and how it is achieved?  </span><!-- react-text: 4188 --></div></h2><div class="_2liMA"><div class="_11WpK"></div>
+<p>bit import bit.utils/string/left-pad --path src/left-pad</p>
 
-What and how it is achieved?
+<p>Using above command, we can import the needed component to the project.</p>
 
-bit import bit.utils/string/left-pad --path src/left-pad
+<p>For doing this we need NodeJS and Bit installed in the machine.</p>
 
-Using above command, we can import the needed component to the project.
+<p>Bit Installation steps is given below.</p>
 
-For doing this we need NodeJS and Bit installed in the machine.
+<p>https://docs.bitsrc.io/docs/installation.html</p>
 
-Bit Installation steps is given below.
+<p>You need to have NodeJS installed before doing below steps </p>
 
-https://docs.bitsrc.io/docs/installation.html
-
-You need to have NodeJS installed before doing below steps 
-
-npm install bit-bin --global
+<p>npm install bit-bin --global
+</p>
 
 
 
